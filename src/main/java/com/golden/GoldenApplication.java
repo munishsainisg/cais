@@ -1,5 +1,6 @@
 package com.golden;
 
+import com.golden.model.Tutorial;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
