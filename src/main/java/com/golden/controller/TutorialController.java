@@ -38,11 +38,15 @@ public class TutorialController {
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> getTutorialById( @PathVariable("id") long id){
 
-        Optional<Tutorial> obj = repos.findById(id);
-        if (obj.isPresent()) {
-            return new ResponseEntity<>(obj.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(obj.get(), HttpStatus.NOT_FOUND);
+        try {
+            Optional<Tutorial> obj = repos.findById(id);
+            if (obj.isPresent()) {
+                return new ResponseEntity<>(obj.get(), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(obj.get(), HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
     }
